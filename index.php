@@ -18,4 +18,6 @@ if (file_exists($filename)) {
                 break 2;
         }
     }
+} else {
+    echo "Файл с именем \"one file.txt\" в папке проекта \"files\" - отсутствует.";
 }
