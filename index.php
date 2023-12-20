@@ -1,23 +1,30 @@
 <?php
 declare(strict_types=1);
 
-$filename = "files/one file.txt";
+function writeToFile(string $filename): void
+{
+    file_put_contents($filename, readline("Введите данные для записи: ") . "\n", FILE_APPEND);
+}
+function readFromFile(string $filename): void
+{
+    echo file_get_contents($filename);
+}
+
+$filename = readline("Введите имя/путь файла: ");
 if (file_exists($filename)) {
     while (true) {
         $mode = (int) readline("Для записи в файл введите \"1\"; для чтения из файла - \"2\"; для выхода из программы - любое другое число: ");
         switch ($mode) {
             case 1:
-                $wData = readline("Введите данные для записи: ");
-                file_put_contents($filename, $wData . "\n", FILE_APPEND);
+                writeToFile($filename);
                 break;
             case 2:
-                $rData = file_get_contents($filename);
-                echo "Данные файла:\n$rData";
+                readFromFile($filename);
                 break;
             default:
                 break 2;
         }
     }
 } else {
-    echo "Файл с именем \"one file.txt\" в папке проекта \"files\" - отсутствует.";
+    echo "Такого файла не существует";
 }
