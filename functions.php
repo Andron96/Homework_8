@@ -1,5 +1,4 @@
 <?php
-
 function writeToFile(string $filename, string $wData): string
 {
     $wResult = file_put_contents($filename, $wData, FILE_APPEND);
