@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+include "functions.php";
+
 $filename = readline("Введите имя/путь файла: ");
 if (file_exists($filename)) {
     while (true) {
